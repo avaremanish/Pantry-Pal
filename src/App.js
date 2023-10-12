@@ -1,23 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import IngredientInput from './Components/Ingrident/IngredientInput';
+import RecipeList from './Components/RecipeList/RecipeList';
+import "../src/App.css"
 
 function App() {
+  const [ingredients, setIngredients] = useState([]);
+
+  const addIngredient = (ingredient) => {
+    setIngredients([...ingredients, ingredient]);
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Smart Recipe Manager</h1>
+      <IngredientInput addIngredient={addIngredient} />
+      <RecipeList ingredients={ingredients} />
+    
     </div>
   );
 }
